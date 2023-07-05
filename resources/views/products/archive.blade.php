@@ -18,6 +18,7 @@
                     <th>Product SKU</th>
                     <th>Product Name</th>
                     <th>Product Price</th>
+                    <th>Product Category</th>
                     <th>Product Weight</th>
                     <th>Product Cart Desc</th>
                     <th class="text-center">Product Long Desc</th>
@@ -31,6 +32,11 @@
                     <td>{{$product->productSKU}}</td>
                     <td>{{$product->productName}}</td>
                     <td>{{$product->productPrice}}</td>
+                    <td>
+                        @foreach ($product->categories as $category)
+                            <span>{{ $category->category_name }}</span>
+                        @endforeach
+                    </td>
                     <td>{{$product->productWeight}}</td>
                     <td>{{$product->productCartDesc}}</td>
                     <td>{{$product->productLongDesc}}</td>
@@ -43,7 +49,8 @@
                       <div class="justify-content-center" style="display: flex; gap: 10px;">
                           <a href="{{ route('showProducts',$product->id) }}" type="button" class="btn btn-warning">Details</a>
                           <a href="{{ route('unarchiveProducts',$product->id) }}" type="button" class="btn btn-success">Unarchive</a>
-                      </div>
+                          <a href="{{ route('delarchiveProducts',$product->id) }}" type="button" class="btn btn-danger">Delete</a>  
+                        </div>
                    </td>
                 </tr>
             @endforeach

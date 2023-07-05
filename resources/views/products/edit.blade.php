@@ -14,6 +14,20 @@
         <input type="text" class="form-control" id="name" value="{{$product->productName}}" name="productName" required>
       </div>
       <div class="form-group">
+          <label for="category">Product Category:</label>
+          <select class="form-control" id="category" name="category_id" required>
+              @if($product->category)
+                  <option value="{{$product->category_id}}">{{$product->category->category_name}}</option>
+              @endif
+              @foreach($categories as $category)
+                  @if(!$product->category || $category->id != $product->category_id)
+                      <option value="{{ $category->id }}">{{ $category->category_name }}</option>
+                  @endif
+              @endforeach
+          </select>
+      </div>
+
+      <div class="form-group">
         <label for="price">Product Price:</label>
         <input type="number" class="form-control" id="price" value="{{$product->productPrice}}"name="productPrice" required>
       </div>
