@@ -3,7 +3,7 @@
   <div class="container">
     <h2>Product Form</h2>
     <form action="{{ route('storeProducts') }}" method="POST" enctype="multipart/form-data">
-        @csrf
+      @csrf
       <div class="form-group">
         <label for="sku">Product SKU:</label>
         <input type="text" class="form-control" id="sku" name="productSKU" required>
@@ -11,6 +11,15 @@
       <div class="form-group">
         <label for="name">Product Name:</label>
         <input type="text" class="form-control" id="name" name="productName" required>
+      </div>
+      <div class="form-group">
+        <label for="category">Product Category:</label>
+        <select class="form-control" id="category" name="category_id" required>
+          <option>Select a category</option>
+          @foreach($categories as $category)
+            <option value="{{ $category->id }}">{{ $category->category_name }}</option>
+          @endforeach
+        </select>
       </div>
       <div class="form-group">
         <label for="price">Product Price:</label>
@@ -53,4 +62,4 @@
     }
   </script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-  </div>
+</div>

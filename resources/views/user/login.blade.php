@@ -31,15 +31,25 @@
                 <input name="userEmail" type="email" id="form3Example3" class="form-control form-control-lg"
                 placeholder="Enter a valid email address" />
                 <label class="form-label" for="form3Example3">Email address</label>
+                <br>
+            <span class="text-danger">
+            @error('userEmail')
+                {{$message}}
+            @enderror
+            </span>
             </div>
-
             <!-- Password input -->
             <div class="form-outline mb-3">
                 <input name="userPassword" type="password" id="form3Example4" class="form-control form-control-lg"
                 placeholder="Enter password" />
                 <label class="form-label" for="form3Example4">Password</label>
+                <br>
+            <span class="text-danger">
+            @error('userPassword')
+                {{$message}}
+            @enderror
+            </span>
             </div>
-
             <div class="d-flex justify-content-between align-items-center">
                 <!-- Checkbox -->
                 <div class="form-check mb-0">

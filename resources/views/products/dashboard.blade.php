@@ -13,6 +13,7 @@
                         <div class="input-group-append">
                             <button class="btn btn-primary" type="submit">Search</button>
                         </div>
+                    <a href="{{ route('refreshProducts') }}" type="button" class="btn btn-success">Refresh</a>
                     </div>
                 </form>
             </div>
@@ -32,6 +33,7 @@
                 <tr>
                     <th>Product SKU</th>
                     <th>Product Name</th>
+                    <th>Product Category</th>
                     <th>Product Price</th>
                     <th>Product Weight</th>
                     <th>Product Cart Desc</th>
@@ -45,6 +47,11 @@
                 <tr>
                     <td>{{$product->productSKU}}</td>
                     <td>{{$product->productName}}</td>
+                    <td>
+                        @foreach ($product->categories as $category)
+                            <span>{{ $category->category_name }}</span>
+                        @endforeach
+                    </td>
                     <td>{{$product->productPrice}}</td>
                     <td>{{$product->productWeight}}</td>
                     <td>{{$product->productCartDesc}}</td>
@@ -52,7 +59,6 @@
                     <td class="text-center">
                         <img src="{{ asset('uploads/' . $product->productImage) }}" alt="Product Image" width="50">
                     </td>
-
                     <td>{{$product->productStock}}</td>
                     <td>
                       <div class="justify-content-center" style="display: flex; gap: 10px;">

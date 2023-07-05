@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\LoginValidation;
 use App\Models\User;
 use Illuminate\Support\Facades\Request as Input;
 use Illuminate\Http\Request;
@@ -50,12 +51,12 @@ class UserController extends Controller
         }
         
     }
-public function loggedin(Request $request)
+public function loggedin(LoginValidation $request)
 {
     $user = User::where('userEmail', $request->userEmail)->first();
     
     if ($user && Hash::check($request->userPassword, $user->userPassword)) {
-        session()->put('userId', $user->userId);
+        session()->put('user_id', $user->user_id);
         $username = $user->usernames;
         session()->put('usernames', $username);
         return redirect()->route('welcome')->with('success', 'Login successful!');
@@ -66,7 +67,7 @@ public function loggedin(Request $request)
     }
 }
     public function logout(){
-        session()->forget('userId');
+        session()->forget('user_id');
         return redirect()->route('login')->with('success', 'Logout successfully!');
     }
 }
