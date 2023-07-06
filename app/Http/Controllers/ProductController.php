@@ -184,9 +184,4 @@ class ProductController extends Controller
         $product->delete(); // Delete the product
         return redirect()->route('archiveProducts')->with('success', 'Product deleted successfully!');
     }
-
-    public function details()
-    {
-        return view('orders.details');
-    }
 }

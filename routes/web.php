@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\OrderController;
 
 
 Route::get('/', function () {
@@ -13,7 +14,7 @@ Route::group(['prefix'=>'user'],function(){
     Route::get('/signup', [UserController::class, 'create'])->name('signup');
     Route::get('/login', [UserController::class, 'login'])->name('login');
     Route::get('/logout', [UserController::class, 'logout'])->name('logout');
-    // Route::get('/', [UserController::class, 'store'])->name('storeUser');
+    Route::get('/', [UserController::class, 'store'])->name('storeUser');
     Route::post('/register-user', [UserController::class, 'store'])->name('storeUser');
     Route::post('/', [UserController::class, 'loggedin'])->name('loginUser');
 });
@@ -34,7 +35,8 @@ Route::group(['prefix' => 'products', 'middleware' => 'auth.user'], function () 
 });
 
 Route::group(['prefix' => 'orders', 'middleware' => 'auth.user'], function () {
-    Route::get('/details', [ProductController::class, 'details'])->name('orderDetails'); 
+    Route::get('/dashboard', [OrderController::class, 'details'])->name('orderDetails'); 
+    Route::get('/orders/{order}', [OrderController::class, 'sendEmail'])->name('sendEmail');
 });
 
 
