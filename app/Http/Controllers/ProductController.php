@@ -13,12 +13,11 @@ class ProductController extends Controller
      */
     public function index()
     {
-        // $products = Product::with('categories')->where('archive', 0)->paginate(5);
-        $products = Product::with('categories')->where('archive', 0)->paginate(5);
+        $product = new Product();
+        $products = $product->getProductsForDashboard();
         return view('products.dashboard', compact('products'));
     }
-    
-    
+
 
     /**
      * Show the form for creating a new resource.
@@ -86,19 +85,22 @@ class ProductController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Product $product)
+    public function edit($id)
     {
         // dd($id);
         // dd($product);
+        $product = new Product();
+        $currentProduct = $product->getCurrentCategory($id);
+        // dd($currentProduct);
         $categories = Category::all();
-        return view('products.edit', compact('product', 'categories'));
+        return view('products.edit', compact('currentProduct', 'categories'));
     }
 
     public function search(Request $request)
     {
         $search = $request->input('search');
-        $products = Product::search($search)->paginate(5);
-        // dd($products);
+        $product = new Product();
+        $products = $product->searchProducts($search);
         return view('products.dashboard', compact('products'));
     }
 
@@ -157,34 +159,25 @@ class ProductController extends Controller
     // 
     public function archive(Product $product)
     {
-        $products = Product::where('archive',1)->paginate(5);
-        // dd($products);
+        $products = $product->getArchivedProducts();
         return view('products.archive', compact('products'));
     }
 
     public function unarchive(Product $product)
     {
-        $product->archive = 0; // Set the archive column to 1
-        $product->save(); // Persist the changes
-    
+        $product->unarchiveProduct();
         return redirect()->route('archiveProducts')->with('success', 'Product Unarchived successfully!');
     }
-    
-    /**
-     * Remove the specified resource from storage.
-     */
+
     public function destroy(Product $product)
     {
-        $product->archive = 1; // Set the archive column to 1
-        $product->save(); // Persist the changes
-    
+        $product->archiveProduct();
         return redirect()->route('products')->with('success', 'Product Archived successfully!');
     }
 
     public function delete(Product $product)
     {
-        $product->categories()->detach(); // Remove the related categories first
-        $product->delete(); // Delete the product
+        $product->deleteProduct();
         return redirect()->route('archiveProducts')->with('success', 'Product deleted successfully!');
     }
 }

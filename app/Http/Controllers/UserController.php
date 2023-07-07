@@ -4,8 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\LoginValidation;
 use App\Models\User;
-use Illuminate\Support\Facades\Request as Input;
-use Illuminate\Http\Request;
+// use Illuminate\Support\Facades\Request as Input;
+// use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use App\Http\Requests\Validation;
 
@@ -51,21 +51,20 @@ class UserController extends Controller
         }
         
     }
-public function loggedin(LoginValidation $request)
-{
-    $user = User::where('userEmail', $request->userEmail)->first();
-    
-    if ($user && Hash::check($request->userPassword, $user->userPassword)) {
-        session()->put('user_id', $user->user_id);
-        $username = $user->usernames;
-        session()->put('usernames', $username);
-        return redirect()->route('welcome')->with('success', 'Login successful!');
-    } else {
-        // Email and password do not match
-        // Perform necessary actions (e.g., show an error message, redirect back, etc.)
-        return redirect()->route('login')->with('error', 'Email/Password incorrect');
+    public function loggedin(LoginValidation $request)
+    {
+        $user = new User();
+        $userData = $user->getUserByEmail($request->userEmail);
+
+        if ($userData && Hash::check($request->userPassword, $userData->userPassword)) {
+            session()->put('user_id', $userData->user_id);
+            session()->put('usernames', $userData->usernames);
+            return redirect()->route('welcome')->with('success', 'Login successful!');
+        } else {
+            return redirect()->route('login')->with('error', 'Email/Password incorrect');
+        }
     }
-}
+
     public function logout(){
         session()->forget('user_id');
         return redirect()->route('login')->with('success', 'Logout successfully!');
