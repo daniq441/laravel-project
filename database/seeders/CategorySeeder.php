@@ -1,20 +1,28 @@
 <?php
-// use Illuminate\Database\Seeder;
-// use App\Models\Category;
+namespace Database\Seeders;
 
-// class CategorySeeder extends Seeder
-// {
-//     /**
-//      * Run the database seeds.
-//      */
-//     public function run(): void
-//     {
-//         // Array of category names
-//         $categoryNames = ['full sleaves', 'short sleaves', 'track suit', 'hiking', 'garments'];
+use Illuminate\Database\Seeder;
+use App\Models\Category;
+use Database\Factories\CategoryFactory;
 
-//         // Create categories
-//         foreach ($categoryNames as $categoryName) {
-//             Category::create(['name' => $categoryName]);
-//         }
-//     }
-// }
+class CategorySeeder extends Seeder
+{
+    public function run()
+    {
+        $categories = [
+            'Full Sleeves',
+            'Short Sleeves',
+            'Track Suit',
+            'Hiking',
+            'Garments',
+        ];
+    
+        foreach ($categories as $category) {
+            CategoryFactory::new()->create([
+                'category_name' => $category,
+            ]);
+        }
+    }
+    
+}
+

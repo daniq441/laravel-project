@@ -21,6 +21,7 @@ return new class extends Migration
             $table->longText('productLongDesc');
             $table->integer('productStock');
             $table->string('productImage')->nullable();
+            $table->boolean('archive')->default(0);
             $table->timestamps();
         });
     }

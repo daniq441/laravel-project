@@ -15,19 +15,19 @@ return new class extends Migration
         Schema::create('users', function (Blueprint $table) {
             // $table->increments('user_id');
             $table->unsignedBigInteger('user_id')->autoIncrement();
-            $table->string('UserEmail', 500);
+            $table->string('userEmail', 500);
             $table->string('usernames', 500);
-            $table->string('UserPassword', 500);
-            $table->string('UserFirstName', 50);
-            $table->string('UserLastName', 50);
+            $table->string('userPassword', 500);
+            $table->string('userFirstName', 50);
+            $table->string('userLastName', 50);
             $table->enum('Gender', ['Male', 'Female']); 
-            $table->string('UserCity', 90)->nullable();
-            $table->string('UserState', 20)->nullable();
-            $table->string('UserZip', 12)->nullable();
-            $table->timestamp('UserRegistrationDate')->default(DB::raw('CURRENT_TIMESTAMP'));
-            $table->string('UserPhone', 20);
-            $table->string('UserCountry', 20)->nullable();
-            $table->string('UserAddress', 50)->nullable();
+            $table->string('userCity', 90)->nullable();
+            $table->string('userState', 20)->nullable();
+            $table->string('userZip', 12)->nullable();
+            $table->timestamp('userRegistrationDate')->default(DB::raw('CURRENT_TIMESTAMP'));
+            $table->string('userPhone', 20);
+            $table->string('userCountry', 20)->nullable();
+            $table->string('userAddress', 50)->nullable();
             $table->timestamps();
         });
     }
