@@ -21,7 +21,7 @@
         <nav class="navbar bg-primary" data-bs-theme="dark">
         <div class="container-fluid">
             <a class="navbar-brand">Ecommerce</a>
-            @if(session()->has('userId'))
+            @if(session()->has('user_id'))
             <form class="d-flex" style="gap: 10px;" role="search">
                 <a href="{{ route('products') }}" type="button" class="btn btn-warning">Products</a>
                 <a href="{{ route('logout') }}" type="button" class="btn btn-secondary">Logout</a>

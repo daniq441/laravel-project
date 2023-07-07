@@ -88,9 +88,12 @@ class ProductController extends Controller
      */
     public function edit(Product $product)
     {
+        // dd($id);
+        // dd($product);
         $categories = Category::all();
         return view('products.edit', compact('product', 'categories'));
     }
+
     public function search(Request $request)
     {
         $search = $request->input('search');
@@ -183,10 +186,5 @@ class ProductController extends Controller
         $product->categories()->detach(); // Remove the related categories first
         $product->delete(); // Delete the product
         return redirect()->route('archiveProducts')->with('success', 'Product deleted successfully!');
-    }
-
-    public function details()
-    {
-        return view('orders.details');
     }
 }

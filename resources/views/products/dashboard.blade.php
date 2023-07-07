@@ -34,8 +34,8 @@
                     <th>Product SKU</th>
                     <th>Product Name</th>
                     <th>Product Category</th>
-                    <th>Product Price</th>
-                    <th>Product Weight</th>
+                    <th>Product Price(Rs)</th>
+                    <th>Product Weight(Gram)</th>
                     <th>Product Cart Desc</th>
                     <th class="text-center">Product Long Desc</th>
                     <th>Product Image</th>

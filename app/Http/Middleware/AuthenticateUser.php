@@ -9,7 +9,7 @@ class AuthenticateUser
 {
     public function handle(Request $request, Closure $next)
     {
-        if(session()->has('userId')) 
+        if(session()->has('user_id')) 
         {
             return $next($request);
         }
