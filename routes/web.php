@@ -24,7 +24,7 @@ Route::group(['prefix' => 'products', 'middleware' => 'auth.user'], function () 
     Route::get('/description/{product}', [ProductController::class, 'show'])->name('showProducts');
     Route::get('/search', [ProductController::class, 'search'])->name('searchProducts');
     Route::get('/refresh', [ProductController::class, 'reset'])->name('refreshProducts');
-    Route::get('/edit/{product}', [ProductController::class, 'edit'])->name('editProducts');
+    Route::get('/edit/{id}', [ProductController::class, 'edit'])->name('editProducts');
     Route::put('/edit/{product}', [ProductController::class, 'update'])->name('updateProducts');
     Route::get('/create', [ProductController::class, 'create'])->name('createProducts');
     Route::get('/archive-products', [ProductController::class, 'archive'])->name('archiveProducts');
