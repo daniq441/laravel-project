@@ -28,6 +28,7 @@ return new class extends Migration
             $table->string('userPhone', 20);
             $table->string('userCountry', 20)->nullable();
             $table->string('userAddress', 50)->nullable();
+            $table->rememberToken();
             $table->timestamps();
         });
     }

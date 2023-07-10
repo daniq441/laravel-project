@@ -17,16 +17,25 @@ class User extends Model
         'userPhone',
         'userEmail',
         'userPassword',
+        'remember_token',
         'gender',
     ];
 
     protected $hidden = [
         'userPassword',
-        '_token',
+        'remember_token',
     ];
 
     public function getUserByEmail($email)
     {
         return $this->where('userEmail', $email)->first();
+    }
+
+    public function getEmailCheck($email){
+        return User::where('userEmail', '=', $email)->first();
+    }
+
+    public function getTokenCheck($remember_token){
+        return User::where('remember_token', '=', $remember_token)->first();
     }
 }

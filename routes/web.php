@@ -17,6 +17,17 @@ Route::group(['prefix'=>'user'],function(){
     Route::get('/', [UserController::class, 'store'])->name('storeUser');
     Route::post('/register-user', [UserController::class, 'store'])->name('storeUser');
     Route::post('/', [UserController::class, 'loggedin'])->name('loginUser');
+
+
+    Route::get('change-password/', [UserController::class, 'password'])->name('changePassword');
+    Route::post('/password-changed', [UserController::class, 'resetpassword'])->name('resetPassword');
+
+
+    Route::get('/reset-password', [UserController::class, 'forgetpassword'])->name('forgetPassword');
+    Route::post('/pw-reset-link-sent', [UserController::class, 'forget'])->name('passwordReset');
+    Route::get('/reset-pw-here/{token}', [UserController::class, 'reset'])->name('passwordResetting');
+    Route::post('/reset-pw-here/{token}', [UserController::class, 'rreset'])->name('passwordResetDone');
+
 });
 
 Route::group(['prefix' => 'products', 'middleware' => 'auth.user'], function () {

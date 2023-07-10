@@ -22,13 +22,16 @@
         <div class="container-fluid">
             <a class="navbar-brand">Ecommerce</a>
             @if(session()->has('user_id'))
-            <form class="d-flex" style="gap: 10px;" role="search">
+            <div class="dropdown">
+                <button class="btn btn-secondary dropdown-toggle" type="button" id="accountDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                    {{ session('usernames') }}
+                </button>
                 <a href="{{ route('products') }}" type="button" class="btn btn-warning">Products</a>
-                <a href="{{ route('logout') }}" type="button" class="btn btn-secondary">Logout</a>
-                <div class="navbar-brand">
-                     <i class="fas fa-user"></i> {{ session('usernames') }}
-                </div>
-            </form>
+                <ul class="dropdown-menu" aria-labelledby="accountDropdown">
+                    <li><a class="dropdown-item" href="{{ route('logout') }}">Logout</a></li>
+                    <li><a class="dropdown-item" href="{{ route('changePassword') }}">Change Password</a></li>
+                </ul>
+            </div>
             @else
             <form class="d-flex" style="gap: 10px;" role="search">
                 <a href="{{ route('signup') }}" type="button" class="btn btn-primary">Sign up</a>
