@@ -33,13 +33,13 @@
                     <div class="form-outline flex-fill mb-0">
                       <input type="text" id="username" name="usernames" class="form-control" />
                       <label class="form-label" for="username">Username</label>
-                    </div>
-                    <br>
-                    <span class="text-danger">
+                      <span class="text-danger">
                     @error('usernames')
                       {{$message}}
                       @enderror
                     </span>
+                    
+                    </div>
                 </div>
 
                 <div class="d-flex flex-row align-items-center mb-4">
@@ -47,12 +47,12 @@
                     <div class="form-outline flex-fill mb-0">
                       <input type="text" id="r-first-name" name="userFirstName" class="form-control" />
                       <label class="form-label" for="r-first-name">First Name</label>
-                    </div>
-                    <span class="text-danger">
+                      <span class="text-danger">
                     @error('userFirstName')
                     {{$message}}
                       @enderror
                       </span>
+                    </div>
                 </div>
 
                 <div class="d-flex flex-row align-items-center mb-4">
@@ -60,12 +60,12 @@
                     <div class="form-outline flex-fill mb-0">
                       <input type="text" id="r-last-name" name="userLastName" class="form-control" />
                       <label class="form-label" for="r-last-name">Last Name</label>
-                    </div>
-                    <span class="text-danger">
+                      <span class="text-danger">
                     @error('userLastName')
                     {{$message}}
                       @enderror
                       </span>
+                    </div>
                 </div>
 
                 <div class="d-flex flex-row align-items-center mb-4">
@@ -73,12 +73,12 @@
                     <div class="form-outline flex-fill mb-0">
                       <input type="phone" id="phone-number" name="userPhone" placeholder="e.g: +92321-8228183" class="form-control" />
                       <label class="form-label" for="phone-number">Phone Number</label>
-                    </div>
-                    <span class="text-danger">
+                      <span class="text-danger">
                     @error('userPhone')
                     {{$message}}
                       @enderror
                       </span>
+                    </div>
                 </div>
 
                 <div class="d-flex flex-row align-items-center mb-4">
@@ -86,25 +86,24 @@
                     <div class="form-outline flex-fill mb-0">
                       <input type="email" id="r-email" name="userEmail" placeholder="e.g: dani.q441@gmail.com" class="form-control" />
                       <label class="form-label" for="r-email">Your Email</label>
-                    </div>
-                    <span class="text-danger">
+                      <span class="text-danger">
                     @error('userEmail')
                     {{$message}}
                       @enderror
                       </span>
-                </div>
-
+                    </div>
+                  </div>
                 <div class="d-flex flex-row align-items-center mb-4">
                     <i class="fas fa-lock fa-lg me-3 fa-fw"></i>
                     <div class="form-outline flex-fill mb-0">
                       <input type="password" id="pw" name= "userPassword" class="form-control" />
                       <label class="form-label" for="pw">Password</label>
-                    </div>
-                    <span class="text-danger">
-                    @error('userPassword')
-                    {{$message}}
-                      @enderror
+                      <span class="text-danger">
+                      @error('userPassword')
+                      {{$message}}
+                        @enderror
                       </span>
+                  </div>
                 </div>
 
                 <div class="d-flex flex-row align-items-center mb-4">
@@ -124,24 +123,25 @@
                     <label class="form-radio-label" for="form2Example3">
                       Female
                     </label>
-                </div>
-                <span class="text-danger">
-                @error('gender')
-                {{$message}}
-                @enderror
-                </span>
+                    <span class="text-danger">
+                      @error('gender')
+                      {{$message}}
+                      @enderror
+                    </span>
+                  </div>
 
                 <div class="form-check d-flex justify-content-center mb-5">
                     <input class="form-check-input me-2" name="check" type="checkbox" value="" id="form2Example3c" />
                     <label class="form-check-label" for="form2Example3">
                       I agree all statements in <a href="#!">Terms of service</a>
                     </label>
-                </div>
-                <span class="text-danger">
+                    <span class="text-danger">
                       @error('check')
                       {{$message}}
                       @enderror
-                </span>
+                    </span>
+                </div>
+
                 
 
                   <div class="d-flex justify-content-center mx-4 mb-3 mb-lg-4">

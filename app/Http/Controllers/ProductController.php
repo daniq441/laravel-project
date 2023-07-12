@@ -8,9 +8,7 @@ use Illuminate\Http\Request;
 
 class ProductController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
+
     public function index()
     {
         $product = new Product();
@@ -18,19 +16,12 @@ class ProductController extends Controller
         return view('products.dashboard', compact('products'));
     }
 
-
-    /**
-     * Show the form for creating a new resource.
-     */
     public function create()
     {
         $categories = Category::all();
         return view('products.create', compact('categories'));
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
     public function store(Request $request)
     {
         $request->validate([
@@ -73,18 +64,11 @@ class ProductController extends Controller
         return redirect()->route('products')->with('success', 'Inserted successfully!');
     }
     
-
-    /**
-     * Display the specified resource.
-     */
     public function show(Product $product)
     {
         return view('products.show', compact('product'));
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
     public function edit($id)
     {
         // dd($id);
@@ -108,9 +92,6 @@ class ProductController extends Controller
         return redirect()->route('products');
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
     public function update(Request $request, Product $product)
 {
     // dd($request->productImage);
@@ -149,7 +130,6 @@ class ProductController extends Controller
         'productStock' => $request->input('productStock'),
     ]);
 
-    // Update the product category
     $category_id = $request->input('category_id');
     $product->categories()->sync([$category_id]);
 
