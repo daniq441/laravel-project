@@ -24,9 +24,9 @@ Route::group(['prefix'=>'user'],function(){
 
 
     Route::get('/reset-password', [UserController::class, 'forgetpassword'])->name('forgetPassword');
-    Route::post('/pw-reset-link-sent', [UserController::class, 'forget'])->name('passwordReset');
-    Route::get('/reset-pw-here/{token}', [UserController::class, 'reset'])->name('passwordResetting');
-    Route::post('/reset-pw-here/{token}', [UserController::class, 'rreset'])->name('passwordResetDone');
+    Route::post('/pw-reset-link-sent', [UserController::class, 'sendlink'])->name('passwordReset');
+    Route::get('/reset-pw-here/{token}', [UserController::class, 'resetscreen'])->name('passwordResetting');
+    Route::post('/reset-pw-here/{token}', [UserController::class, 'pwreset'])->name('passwordResetDone');
 
 });
 
