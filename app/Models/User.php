@@ -1,7 +1,9 @@
 <?php
 namespace App\Models;
+namespace App\Services;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Hash;
 
@@ -30,6 +32,10 @@ class User extends Model
     {
         return $this->where('userEmail', $email)->first();
     }
+    public function getUserById($id)
+    {
+        return $this->where('user_id', $id)->first();
+    }
 
     public function getEmailCheck($email){
         return User::where('userEmail', '=', $email)->first();
@@ -37,5 +43,10 @@ class User extends Model
 
     public function getTokenCheck($remember_token){
         return User::where('remember_token', '=', $remember_token)->first();
+    }
+
+    public function getUserByToken($token)
+    {
+        return $this->where('remember_token', $token)->first();
     }
 }
